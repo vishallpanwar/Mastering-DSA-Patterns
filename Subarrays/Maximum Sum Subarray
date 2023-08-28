@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+        // Let max ele array ka 1 element hai
+        int maxi=nums[0];
+        int sum=0;
+
+        for(int i=0;i<nums.size();i++){
+            
+            // Step 1 : Poore array ka sum nikalte chlo
+            sum+=nums[i];
+
+            // Step 2 : har sum ke sath max update krte chlo
+            maxi=max(maxi, sum);
+            
+            // Step 3 : If ve element aya ya sum 0 hogya to sum ko dobara 0 krdo
+            if(sum<0){
+                sum=0;
+            }
+        }
+        return maxi;
+    }
+};
+

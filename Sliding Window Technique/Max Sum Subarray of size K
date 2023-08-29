@@ -1,0 +1,30 @@
+class Solution{   
+public:
+   long maximumSumSubarray(int K, vector<int> &Arr , int N){
+       // code here 
+       int i=0,j=0;
+       long long ans=0,sum=0;
+       
+       // Jbtk j arrayke size ke andr hai tbtk loop chne do
+       while(j<N){
+           
+           // Jbtk j window ke size tk nhi phuch jata, tbtk uske sum lete chlo
+           sum+=Arr[j];
+           if(j-i+1<K){
+               j++;
+           }
+           
+           // Agr window size phuch gya to max nikal lo and ith index wla sum 
+           // minus krdo kyuki agli window me jane ke liye agle element ka sum lena hai
+           // and agli window me jane ke liye i aur j dono ko aage bdha do
+           else if(j-i+1==K){
+               ans = max(sum,ans);
+               sum-=Arr[i];
+               
+               i++;
+               j++;
+           }
+       }
+       return ans;
+   }
+};

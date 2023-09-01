@@ -1,0 +1,35 @@
+class Solution
+{
+    public:
+    vector<int> subarraySum(vector<int>arr, int n, long long s){
+        
+        if(s==0)
+        return {-1};
+        
+        int start=0,end=0;
+        long long windowSum=arr[0];
+        
+        // Jbtk window ka last element range me hai tbtk loop chlne do
+        while(end<n){
+            
+           // Agr window sum given sum se km hai to window size bdhao
+           if(windowSum<s){
+               end++;
+               windowSum+=arr[end];
+           }
+           
+           // Agr window sum given sum ke barabar hai to wo indexes return krdo
+           else if(windowSum==s){
+               return {start+1,end+1}; 
+           }
+           
+           // Agr window sum given sum se zyada hai to window size ghatao 
+           // and next window pr jane ke liye phla element ko ghatao
+           else if(windowSum>s){
+               windowSum-=arr[start];
+               start++;
+           }
+       }
+       return {-1};
+    }
+};

@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        int hash[256]={0};
+        int left=0;
+        int right=0;
+        int ans=0;
+        
+        // Jbtk right range me hai, tbtk loop chlne do
+        while(right<s.length()){
+            hash[s[right]]++;
+            
+            // Jbtk kisi ele ki freq 1 se bdi hai tbtk uske tail
+            // ele ki freq cut krke usko shrink krte rho
+            while(hash[s[right]]>1){
+                hash[s[left]]--;
+                left++;
+            }
+
+            // Max windo size nikalo and agli windo ke liye chk kro
+            ans=max(ans, right-left+1);
+            right++;
+        }
+        return ans;
+    }
+};

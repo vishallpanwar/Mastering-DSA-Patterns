@@ -27,8 +27,7 @@ vector<long long> printFirstNegativeInteger(long long int A[], long long int N, 
                // Agr aage bhi same element hai jo pop kiya tha to usko bhi nikaal do
                if(A[i]==q.front())
                q.pop();
-           }
-           
+        } 
            i++;
            j++;
        }
